@@ -1,0 +1,36 @@
+<h1 id="tableLabel">Products List</h1>
+
+<p *ngIf="products.length == 0"><em>The List of Products is Empty, Refresh once the .Net Backend has started.</em></p>
+
+<div>
+  <a mat-raised-button [routerLink]="['/Product']" style="margin: 10px 0 20px 0;" class="add-btn"><mat-icon>add</mat-icon>Add New Product</a>
+  <div class="container">
+    <div class="row justify-content-center">
+      <table *ngIf="products.length > 0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{ product.name }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+              <a mat-raised-button [routerLink]="['/Product', product.id]" class="btn update-btn">
+                <mat-icon>edit</mat-icon>
+              </a>
+              <button mat-raised-button (click)="deleteProduct(product.id)" class="btn delete-btn">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

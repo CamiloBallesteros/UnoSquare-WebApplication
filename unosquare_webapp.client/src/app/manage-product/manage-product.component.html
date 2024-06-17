@@ -1,0 +1,26 @@
+<div class="container">
+  <h1 *ngIf="viewProduct.id == 0">Add New Product</h1>
+  <h1 *ngIf="viewProduct.id != 0">Update Product</h1>
+  <input type="hidden" [(ngModel)]="viewProduct.id" />
+  <div class="row justify-content-center">
+    <mat-form-field class="mx-2">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" name="name" [(ngModel)]="viewProduct.name" required>
+    </mat-form-field>
+    <mat-form-field class="mx-2">
+      <mat-label>Price</mat-label>
+      <input matInput type="number" name="price" [(ngModel)]="viewProduct.price" required>
+    </mat-form-field>
+  </div>
+  <div class="row justify-content-center textarea">
+    <mat-form-field class="w-100">
+      <mat-label>Description</mat-label>
+      <textarea matInput type="text" name="description" [(ngModel)]="viewProduct.description" required></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="row justify-content-center">
+    <button mat-raised-button *ngIf="viewProduct.id == 0" (click)="addNewProduct()" class="save-btn">Save</button>
+    <button mat-raised-button *ngIf="viewProduct.id != 0" (click)="updateProduct()" class="save-btn">Update</button>
+  </div>
+</div>
